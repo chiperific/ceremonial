@@ -10,6 +10,12 @@ The system will perform or allow for the features listed below:
 _(Easy stuff to make, doesn't change much of "the process", more convenience for the clients, a good shared "portal" for everyone)_
 
 * Replace all Wufoo forms with a single system that combines all form data into "client" and "ceremony" records
+  - Information gathering will still be broken up along the same structure as the Wufoo forms:
+    - Clients will start with submitting a "check date / request" form
+    - Then Basic Information Form
+    - Ceremony planning will be a combination of "form selection" and "document editing".
+    - Survey form afterwards
+  - But the information is all intelligently connected to a singular record
 
 * Allow for clients (and officiants) to build and edit their own ceremony(s):
   - Automatically adjust default ceremony format based upon religious/spiritual preferences

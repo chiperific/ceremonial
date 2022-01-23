@@ -1,12 +1,12 @@
 # Ceremonial #
 _Wedding planning software for the strong-willed old dog_
 
-## Work In Progress ##
+### _Work In Progress_ ###
 This app is a work in progress / proposal. Developers: nothing to fork here yet, it's an empty Rails 7 app. Move along.
 
 The system will perform or allow for the features listed below:
 
-### Basic tasks: ###
+## Basic tasks: ##
 * Replace all Wufoo forms with a single system that combines all form data into "client" and "ceremony" records
 
 * Allow for clients (and officiants) to build and edit their own ceremony(s):
@@ -40,7 +40,7 @@ The system will perform or allow for the features listed below:
   - Feedback surveys only visible to Administrators, unless Admin shares it with the Officiant
 
 
-### Advanced, possible features: ###
+## Advanced, possible features: ##
 _(really new tricks for a poor old dog, might not be worth it)_
 
 * Track clients from "check date / request" phase through survey and reviews

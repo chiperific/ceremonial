@@ -1,8 +1,8 @@
 # Ceremonial #
 _Wedding planning software for the strong-willed old dog_
 
-## WIP ##
-This app is a work on progress / proposal.
+## Work In Progress ##
+This app is a work in progress / proposal. Developers: nothing to fork here yet, it's an empty Rails 7 app. Move along.
 
 The system will perform or allow for the features listed below:
 

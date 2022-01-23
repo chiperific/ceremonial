@@ -7,9 +7,7 @@ _This app is a work in progress / proposal. Developers: nothing to fork here yet
 The system will perform or allow for the features listed below:
 
 ## Basic tasks: ##
-_Easy to do, probably worth doing, doesn't change much of "the process"._
-
-_More convenience for the clients, a good shared "portal" for everyone._
+_(Easy stuff to make, doesn't change much of "the process", more convenience for the clients, a good shared "portal" for everyone)_
 
 * Replace all Wufoo forms with a single system that combines all form data into "client" and "ceremony" records
 

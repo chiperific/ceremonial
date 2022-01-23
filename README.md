@@ -1,7 +1,10 @@
-# README
-
-## Ceremonial ##
+# Ceremonial #
 _Wedding planning software for the strong-willed old dog_
+
+## WIP ##
+This app is a work on progress / proposal.
+
+The system will perform or allow for the features listed below:
 
 ### Basic tasks: ###
 * Replace all Wufoo forms with a single system that combines all form data into "client" and "ceremony" records
@@ -36,6 +39,7 @@ _Wedding planning software for the strong-willed old dog_
 
 
 #### Developer notes ####
+_don't read this if your name is Tom_
 * Google Tasks or Calendar API? For setting tasks, deadlines, ceremony dates, rehearsal dates
 * SMS integration: SMSEasy https://github.com/preston/sms-easy
 * Stripe integration for payment processing

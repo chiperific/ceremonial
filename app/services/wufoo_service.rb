@@ -17,13 +17,16 @@ class WufooService
     @response = self.class.get("/forms.json")
   end
 
+  def get_form(hash_url)
+    @response = self.class.get("/forms/#{hash_url}.json")
+  end
+
   def get_form_fields(fields_link)
     @response = self.class.get(fields_link)
   end
 
-  def get_form_entries(entries_link)
-    debugger
-    @response = self.class.get(entries_link)
+  def get_form_comments(hash_url)
+    @response = self.class.get("/forms/#{hash_url}/comments.json")
   end
 
   def get_entry(entry_number, entries_link)

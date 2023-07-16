@@ -1,4 +1,6 @@
 class Form < ApplicationRecord
+  has_many :fields, dependent: :destroy
+
   def self.ceremony_form
     find_by(hash_url: "z13fw81l0rp9wff")
   end
@@ -18,7 +20,19 @@ class Form < ApplicationRecord
 
   def list_fields
     response = WufooService.new.get_form_fields(fields_link)
-    response["Fields"]
+    # response["Fields"]
+  end
+
+  def api_version
+    WufooService.new.get_form(hash_url)
+  end
+
+  def get_fields_from_wufoo
+    Field.from_wufoo(self)
+  end
+
+  def list_comments
+    response = WufooService.new.get_form_comments(hash_url)
   end
 
   def list_entries

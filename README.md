@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Models:
 
-Things you may want to cover:
+## Wufoo stuff
+* Form
+* Field
 
-* Ruby version
+## Wedding stuff
+* Ceremony
+  - religious?
+  - spouse_one:references Spouse
+  - spouse_two:references Spouse
+  - event_date
+  - rehearsal_date
+  - venue:references Venue
+* Spouse
+  - first name
+  - last name
+  - witness_name
+* Venue
 
-* System dependencies
+## Ceremony builder stuff
+* Element
+  - is_default
+  - duplicate_of:references Element
 
-* Configuration
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Features
+* County lookup from address
+* Re-order sections/elements
+* Add custom sections/elements
+* Customize language one-off without changing "default" language

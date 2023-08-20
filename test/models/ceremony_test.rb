@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class FormTest < ActiveSupport::TestCase
+class CeremonyTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

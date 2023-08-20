@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class FormTest < ActiveSupport::TestCase
+class SpouseTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

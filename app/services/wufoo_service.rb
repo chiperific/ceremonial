@@ -34,8 +34,8 @@ class WufooService
     @response = self.class.get(entries_link + filter)
   end
 
-  def get_form_entry(form_hash)
-    @response = self.class.get("/forms/#{form_hash}.json")
+  def get_form_entries(entries_link)
+    @response = self.class.get(entries_link)
   end
 
   def auth

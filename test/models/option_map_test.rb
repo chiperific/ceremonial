@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class FormTest < ActiveSupport::TestCase
+class OptionMapTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

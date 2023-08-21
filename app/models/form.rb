@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Form < ApplicationRecord
-  has_many :fields, dependent: :destroy
-
   def self.ceremony_form
     find_by(hash_url: "z13fw81l0rp9wff")
   end

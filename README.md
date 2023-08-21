@@ -1,16 +1,13 @@
 # README
 
 ## NEXT STEPS
-1. Use several Entries to create Venue, Spouse, and Ceremony records
-  - will help clarify EntryMap
-
-1. Create seeds for Section and Element records
-
-1. Create seeds for OptionMap records
-
 1. Create a Builder Service and Blueprints for the default religious and nonreligious ceremonies
 
-1. Decide how to handle ceremony building on-demand
+1. Decide how to handle ceremony building via wufoo responses
+  - generate a "default" ceremony based on
+    - "Form722"	For the bride: Please choose which answer best represents where you stand on issues of faith and spirituality.
+    - "Form731"	For the groom: Please choose which answer best represents where you stand on issues of faith and spirituality.
+  - from `EntryParsingService.parse!("Fwd: Our Wedding Ceremony (v9) [#4958]")`
 
 1. Google integration:
   - Create Google Docs folder and set color
@@ -19,7 +16,7 @@
 
 ## Wufoo stuff
 * Form
-* Field
+* Field (not needed, EntryMap can handle)
 * Entry (in-memory only?)
 
 
@@ -28,7 +25,7 @@
   - model
   - attribute
 
-* OptionMap (translates an entry's value to the actual text to generate)
+* OptionMap (translates an entry's value to the Entry record)
   - field_api_id
   - entry_text (e.g. "Greeting #1")
   - element_id
@@ -62,27 +59,28 @@ Section
   - is_religious? (e.g. "Opening Prayer")
   - default_previous_section_id
 
-CeremonySections
+CeremonyOrder
   - ceremony_id
   - section_id
   - previous_section_id
 
-Element (same as OptionMap??)
-  - name
-  - title
-  - text
+Element (one for each standard text and each option text and each spouse)
+  - name (announcement, secondary spouse declaration of intent)
+  - text (includes interpolation)
   - is_default?
   - is_religious?
   - default_previous_element_id
   - default_section_id
-  - has_nonreligious_variant?
-  - nonreligious_variant (another element_id)
 
 SectionElements
   - section_id
   - element_id
   - previous_element_id
 
+InterpolationMap
+  - keyword (NAMES_SHUFFLED_RANDOMLY, NOMITIVE)
+  - model_as_string (Ceremony, Spouse)
+  - attribute_as_string (names_shuffled_randomly, nomitive)
 
 A Ceremony has many Sections, in a specified, re-arrangeable order
   - can use linked list strategy!!

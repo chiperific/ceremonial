@@ -1,0 +1,2 @@
+class InterpolationMap < ApplicationRecord
+end

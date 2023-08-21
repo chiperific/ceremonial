@@ -5,14 +5,16 @@ class CreateSpouse < ActiveRecord::Migration[7.0]
     create_table :spouses do |t|
       t.string :forename
       t.string :surname
-      t.string :surname_will_become
+      t.string :full_name
       t.string :email
       t.string :phone_number
       t.integer :gender, default: 0
       t.string :nomitive
       t.string :posessive
       t.string :declarative
+      t.string :pre_declarative
       t.string :witness_name
+      t.jsonb :document, default: {}
       t.timestamps
     end
   end

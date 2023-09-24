@@ -12,7 +12,7 @@ class Element < ApplicationRecord
 
   # name must match the Entry value for lookups
   # e.g. {"Form718" => "Greeting #1"}
-  validates_presence_of :name, :text, :field_api_id, :field_response,
+  validates_presence_of :name, :text, :field_api_id, :field_response
 
   scope :only_defaults, -> { where(is_default: true) }
   scope :with_religious_preference, ->(is_religious) { where(is_religious: is_religious) }

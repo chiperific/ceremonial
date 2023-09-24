@@ -28,13 +28,15 @@ class Ceremony < ApplicationRecord
     rehearsal_dinner_start_time: :string,
     photography: :string
     # for the wedding ceremony planning form
-
+    remembrance_names: :text,
     other_ceremony_participants: :text,
     child_participants: :text,
     number_of_attendants: :string,
     number_of_child_attendants: :string,
-    child_attendants_notes: :text
-    presentation_title: :string # e.g. "Mr. and Mrs. Smith"
+    child_attendants_notes: :text,
+    presentation_title: :string, # e.g. "Mr. and Mrs. Smith"
+    pre_reception_food: :string,
+    pre_reception_instructions: :string # e.g. "In the meantime, please "
 
   # other_services as an array of strings
   # https://guides.rubyonrails.org/active_record_postgresql.html#array
@@ -67,12 +69,35 @@ class Ceremony < ApplicationRecord
 
   end
 
+  # Instance methods for InterpolationMap:
+  def presence_of_god_text
+    if is_religious?
+      " in the presence of God,"
+    else
+      ""
+    end
+  end
+
+  def and_presence_of_god_text
+    " and #{presence_of_god_text}"
+  end
+
+  def before_god_text
+    "before God,"
+  end
+
   def spouse_forenames
     "#{secondary_spouse.forename} and #{primary_spouse.forename}"
   end
 
   def spouse_forenames_shuffled
     [primary_spouse.forename, secondary_spouse.forename].shuffle.to_sentence
+  end
+
+  def followed_by_prayer_text
+    if is_religious?
+      " followed by prayer"
+    end
   end
 
   private

@@ -53,7 +53,7 @@ class EntryParsingService
         in_memory_record_name = entry_map.model_as_string # e.g. Ceremony
         if entry_map.relationship_name.present?
           in_memory_record_name += ":#{entry_map.relationship_name}"  # e.g. Spouse:primary_spouse
-          @joins[in_memory_record_name] = entry_map.related_model
+          @joins[in_memory_record_name] = entry_map.related_model     # e.g. ?
         end
 
         if @in_memory_records[in_memory_record_name].present?

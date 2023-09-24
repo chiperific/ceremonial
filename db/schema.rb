@@ -55,6 +55,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_122605) do
   create_table "elements", force: :cascade do |t|
     t.string "name"
     t.text "text"
+    t.string "form_hash_url", null: false
+    t.string "field_api_id", null: false
+    t.string "field_response", null: false
     t.string "is_default", default: "f"
     t.string "is_religious", default: "f"
     t.bigint "default_previous_element_id"
@@ -83,8 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_122605) do
 
   create_table "interpolation_maps", force: :cascade do |t|
     t.string "keyword", null: false
-    t.string "model_as_string", null: false
-    t.string "attribute_as_string", null: false
+    t.string "method_chain", default: [], array: true
   end
 
   create_table "option_maps", force: :cascade do |t|
@@ -97,6 +99,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_122605) do
 
   create_table "sections", force: :cascade do |t|
     t.string "name"
+    t.string "form_hash_url"
+    t.string "field_api_id"
+    t.string "field_response"
     t.boolean "is_default", default: false
     t.boolean "is_religious", default: false
     t.bigint "default_previous_section_id"
@@ -107,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_122605) do
     t.string "forename"
     t.string "surname"
     t.string "full_name"
+    t.string "preferred_name"
     t.string "email"
     t.string "phone_number"
     t.integer "gender", default: 0
@@ -115,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_122605) do
     t.string "declarative"
     t.string "pre_declarative"
     t.string "witness_name"
+    t.string "spiritual_statement"
+    t.integer "spiritual_level"
     t.jsonb "document", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

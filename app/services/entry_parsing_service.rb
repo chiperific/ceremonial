@@ -11,6 +11,8 @@ class EntryParsingService
   end
 
   def initialize(email_subject)
+    # Holds related records in memory for later access. E.g. when getting both spouse's information from the Basic Information Form,
+    # Two records need to be created as either the primary or secondary spouse, determined by the field_api_id.
     # { "Ceremony": <Ceremony>}
     @in_memory_records = {}
     @joins = {}
@@ -34,6 +36,7 @@ class EntryParsingService
       @form = Form.find_by(name: @form_name)
     end
 
+    # Gets the entry from Wufuoo as a hash, e.g.: { "Field816"=>"Smith"}
     @entry = @form.get_entry(@entry_number)
   end
 
@@ -42,16 +45,14 @@ class EntryParsingService
       "UpdatedBy").with_indifferent_access.each do |(entry_key, entry_value)|
       next if entry_value.blank?
 
-      # should only be one entry map per field_api_id, but using where as there's no constraint
+      # should only be one entry map per field_api_id, but using `where().each` as there's no constraint
       EntryMap.where(form_hash_url: @form.hash_url, field_api_id: entry_key).each do |entry_map|
         klass = entry_map.model_as_string.constantize
         kattribute = entry_map.attribute_as_string.to_sym
 
-        # Ceremony
-        # Spouse:primary_spouse
-        in_memory_record_name = entry_map.model_as_string
+        in_memory_record_name = entry_map.model_as_string # e.g. Ceremony
         if entry_map.relationship_name.present?
-          in_memory_record_name += ":#{entry_map.relationship_name}"
+          in_memory_record_name += ":#{entry_map.relationship_name}"  # e.g. Spouse:primary_spouse
           @joins[in_memory_record_name] = entry_map.related_model
         end
 

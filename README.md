@@ -1,45 +1,18 @@
 # README
 
 ## NEXT STEPS
-Keep working on seeds file. Don't forget about Optional sections for additional elements.
+Seeds run!
 
-1. Create EntryMap records for the 3 main forms
-  - Basic Information Form - DONE!
-  - Wedding Rehearsal Planning Form (v2) - DONE!
-  - Our Wedding Ceremony (v9)
-    - create EntryMap records when entry data should be stored to a model
-    - create Section and Element records when entry data should just indicate which ones to use / ignore
+1. Review EntryParsingService#generate_records_from_entry
 
-1. InterpolationMap decision
-REMINDER: Element records have the text that needs to be interpolated
-Maybe this is just a constant hash in the Ceremony class?
+1. Save data from a BIF form
+   - `EntryParsingService.parse!("Fwd: Basic Information Form [#1845]")`
+1. Save data from a Rehearsal planning form
+  -  `EntryParsingService.parse!("Fwd: Wedding Rehearsal Planning Form (v2) [#464]")`
 
-CASE: FIRST_NAME_1 should call self.ceremony.primary_spouse.forename to get a dynamic value
-CASE: PRESENCE_OF_GOD should return some static text based on the ceremony.is_religious value
+1. Save data from a Ceremony planning form
 
-Could try a new structure: `InterpolationMap(keyword: String, method_chain: [], conditional_methods: [])`
-```ruby
-{keyword: "PRESENCE_OF_GOD", method_chain: ["ceremony", "presence_of_god_text"], conditional_methods: ["is_religious"]},
-{keword: "FIRST_NAME_1", method_chain: ["ceremony", "primary_spouse", "forename"], conditional_methods: []}
-```
-
-- Element model needs an instance method to search through the `#text` attribute and replace the keywords with the interpolated values (using InterpolationMap records)
-
-Ideally, you could add an InterpolationMap record and it would just work, but it would still be complex. The end user would still be writing the method chains and conditional methods, which would require some knowledge of the models. And if the models don't have that method, you'd still be stuck having to deploy code changes.
-
-Would also require an Admin interface to manage records.
-
-1. Decide how to handle ceremony building via wufoo responses
-  - remember that all Sections and Elements already exist and have `default` and `default_previous` values
-    - so each specific ceremony can use form_hash: "z13fw81l0rp9wff" entries to just gather a list of Section and Element IDs
-    - remember that  I created CeremonyOrders model for some reason
-  - build a "default" map that is a list of Our Wedding Ceremony (v9) form keys so you can iterate over the keys to find the right Sections and Elements
-    - maybe a CeremonyMap model to just order the sections?
-
-  - generate a "default" ceremony based on
-    - "Form722"	For the bride: Please choose which answer best represents where you stand on issues of faith and spirituality.
-    - "Form731"	For the groom: Please choose which answer best represents where you stand on issues of faith and spirituality.
-  - from `EntryParsingService.parse!("Fwd: Our Wedding Ceremony (v9) [#4958]")`
+1. Generate ceremony from a Ceremony planning form
 
 1. Google integration:
   - Create Google Docs folder and set color
